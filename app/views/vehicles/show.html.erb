@@ -30,9 +30,30 @@
             <%= link_to "#", class: "site-btn price-btn" do %>
               <%= t ".price" %>: <%= @vehicle.price %>
             <% end %>
-            <%= link_to t(".book"), new_hiring_path(vehicle_id: @vehicle.id), class: "site-btn buy-btn" %>
+            <% if logged_in? %>
+              <%= link_to t(".book"), new_hiring_path(vehicle_id: @vehicle.id), class: "site-btn buy-btn" %>
+            <% else %>
+              <%= link_to t(".book"), new_hiring_path(vehicle_id: @vehicle.id), class: "site-btn buy-btn", remote: true %>
+            <% end %>
+          </div>
         </div>
-      </div>
+		<div class="comment_block">
+		 <div class="create_new_comment">
+      <% if logged_in? %>
+		 	<div class="user_avatar">
+		 		<img src="https://s3.amazonaws.com/uifaces/faces/twitter/BillSKenney/73.jpg">
+		 	  </div><!-- the input field --><div class="input_comment">
+		 		  <%= form_for [@vehicle, @comment], remote: true do |f| %>
+            <%= f.text_field :content, placeholder: t(".add"), id: "text_area" %><br/>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+          <% end %>
+		 	  </div>
+		   </div>
+       <% end %>
+       <div id = "comment_block">
+         <%= render partial: "comments/comment", collection: @comments %>
+	      </div>
+			</div>
     </div>
   </div>
 </section>

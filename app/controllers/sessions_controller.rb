@@ -6,15 +6,10 @@ class SessionsController < ApplicationController
 
     if user&.authenticate params[:session][:password]
       log_in user
-
-      if user.admin?
-        redirect_to admin_index_path
-      else
-        redirect_back_or root_path
-      end
+      redirect_back_or root_path
     else
       flash[:danger] = t ".invalid"
-      render :new
+      render "sessions/form"
     end
   end
 

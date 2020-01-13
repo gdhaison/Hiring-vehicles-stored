@@ -4,9 +4,11 @@
     <p><%= t ".text2" %><br><%= t ".text3" %><br><%= t ".text4" %></p>
   </div>
   <div class="row">
+    <% if !current_user %>
     <div class="col-lg-10 offset-lg-5">
-      <center><%= link_to t(".sign_up"), signup_path, class: "btn site-btn", remote: true %></center>
+      <center><%= link_to t(".sign_up"), signup_path, class: "btn site-btn", id: "sign-up-btn", remote: true %></center>
     </div>
+    <% end %>
   </div>
 </div>
 <div class="container">

@@ -4,18 +4,38 @@
     <title><%= full_title yield :title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+  <!-- Core plugin JavaScript-->
+
+  <!-- Custom scripts for all pages-->
+
+
+  <!-- Custom styles for this template-->
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+    <%= custom_bootstrap_flash %>
   </head>
 
-  <body>
+  <body id="page-top">
     <%= render "layouts/admin/header" %>
-    <div class="container">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
-      <%= yield %>
-    </div>
+      <div class="container">
+        <% if flash.present? %>
+          <div id="flash">
+            <script>
+              <% if flash[:success] %>
+                toastr.success("<%= flash[:success] %>")
+              <% end %>
+              <% if flash[:warning] %>
+                toastr.warning("<%= flash[:warning] %>")
+              <% end %>
+              <% if flash[:danger] %>
+                toastr.error("<%= flash[:danger] %>")
+              <% end %>
+            </script>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
   </body>
 </html>

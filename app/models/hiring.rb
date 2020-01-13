@@ -1,6 +1,6 @@
 class Hiring < ApplicationRecord
   HIRING_PARAMS = %i(vehicle_id time).freeze
-  HIRING_UPDATE_PARAMS = %i(status).freeze
+  HIRING_UPDATE_PARAMS = %i(status des).freeze
   enum status: %i(ordered taking give_back)
 
   belongs_to :user
@@ -15,7 +15,7 @@ class Hiring < ApplicationRecord
   delegate :name, to: :user, prefix: :user
 
   scope :taking, ->{where("give_back_time < ?", Time.zone.now)}
-  scope :monthly_statistic, ->{group_by_month(:created_at).size}
+  scope :monthly_statistic, ->{where("created_at > ?", 10.months.ago).group_by_month(:created_at).size}
   ransacker :created_at do
     Arel.sql("date(created_at)")
   end

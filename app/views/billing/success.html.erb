@@ -1,10 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 mt-4 text-center">
-      <h2><%= t ".suc" %></h2>
+<div class="ticket">
+  <div class="ticket__content">
+    <div class="text-center">
+      <p>Name : <%= current_user.name %></p>
+      <p>Email : <%= current_user.email %></p>
+    </div>
+    <table>
+      <tr>
+        <td>Vehicle : </td>
+        <td><%= @hiring.vehicle.name %></td>
+      </tr>
+      <tr>
+        <td>Branch : </td>
+        <td><%= @hiring.vehicle.branch.name %></td>
+      </tr>
+      <tr>
+        <td>Price : </td>
+        <td><%= @hiring.vehicle.price * @hiring.time %> VND</td>
+        </tr><tr><td>Time : </td>
+        <td><%= @hiring.time %> hours</td>
+      </tr>
+    </table>
+    <%= form_tag payment_path, method: :post do %>
+      <%= submit_tag t(".pay"), class: "btn btn-success", id:"success-payment" %>
+    <% end %>
+    <div class="show_vehicle">
+      <%= image_tag check_image(@hiring.vehicle), id: "bill-image" %>
     </div>
   </div>
 </div>
-<%= form_tag payment_path, method: :post do %>
-  <%= submit_tag t(".pay"), class: "btn btn-primary", id:"success-payment" %>
-<% end %>

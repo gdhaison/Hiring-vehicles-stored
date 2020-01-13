@@ -11,8 +11,8 @@
         <li><%= link_to t(".branchs"), admin_branchs_path %></li>
       </ul>
     </li>
-    <li><%= link_to t(".banner"), "#" %></li>
     <li><%= link_to t(".profile"), admin_user_path(current_user.id) %></li>
+    <li><%= link_to "User page", root_path %></li>
     <li><%= link_to t(".log_out"), logout_path, method: :delete, id: "logout-btn" %></li>
   </ul>
 </div>

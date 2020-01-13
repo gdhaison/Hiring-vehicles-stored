@@ -1,9 +1,10 @@
 <section class="categories-section spad">
   <div class="container">
     <div class="section-title">
-      <h2><%= t ".list" %><%= @branch.name %></h2>
+      <h2 id="branch_text"><%= t ".list" %><%= @branch.name %></h2>
     </div>
     <div class="row">
+      <center><%= paginate @vehicles, theme: "twitter-bootstrap-3" %></center>
       <% @vehicles.each do |vehicle| %>
         <div class="col-lg-4 col-md-6">
           <div class="categorie-item">
@@ -18,4 +19,5 @@
       <% end %>
     </div>
   </div>
+  <center><%= paginate @vehicles, theme: "twitter-bootstrap-3" %></center>
 </section>

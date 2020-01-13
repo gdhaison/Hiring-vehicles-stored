@@ -13,8 +13,7 @@ class UsersController < ApplicationController
       flash[:success] = t ".wel"
       redirect_to root_url
     else
-      flash[:danger] = t ".signup_err"
-      render :new
+      render "users/form"
     end
   end
 

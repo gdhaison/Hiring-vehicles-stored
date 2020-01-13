@@ -23,8 +23,12 @@
   <%= f.label t(".price") %>
   <%= f.number_field :price, class: "form-control", min: Settings.min_time %>
 
+  <div class="upload-preview">
+    <img />
+  </div>
+
   <span class="picture">
-    <%= f.file_field :picture, accept: Settings.accept_image %>
+    <%= f.file_field :picture, accept: Settings.accept_image, class: "file", onchange: "upload(event)" %>
   </span>
 
   <%= f.submit t(".submit"), class: "btn btn-primary btn-lg" %>

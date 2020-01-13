@@ -21,7 +21,10 @@
 //= require lib/searchbox.js
 //= require lib/stripe.js
 //= require lib/gchart.js
+//= require lib/sb-admin-2.js
+//= require lib/sb-admin-2.min.js
 //= require chartkick
+//= require toastr
 //= require activestorage
 //= require turbolinks
 //= require_tree .

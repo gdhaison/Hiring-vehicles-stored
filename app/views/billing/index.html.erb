@@ -1,4 +1,6 @@
-<div class="container">
+<section class="single-course spad pb-0">
+  <div class="container">
+    <div class="course-meta-area">
   <div class="row">
     <div class="col-md-12 mt-4 text-center">
       <h1><%= t ".wel" %> <%= current_user.name %></h1>
@@ -12,8 +14,12 @@
   <div class="row">
     <div class="col-md-12 mt-4 text-center">
       <%= form_tag create_payment_method_path, id: "billing-create-payment-method" do  %>
-        <%= link_to t(".let_go"), add_payment_method_path, remote: true, class: "btn btn-primary" %>
+        <%= link_to "Payment Online with Visa card", add_payment_method_path, remote: true, class: "btn btn-primary btn-lg" %>
       <% end %>
     </div>
   </div>
+  <center><h4>Or</h4></center>
+  <center><%= link_to " Payment cash at our Store ",root_path, class: "btn btn-danger btn-lg" %></center>
 </div>
+</div>
+</section>

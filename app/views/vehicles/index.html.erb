@@ -14,8 +14,8 @@
           </div>
         </div>
       <% end %>
-      <%= paginate @items, theme: "twitter-bootstrap-3" %>
     </div>
+    <%= paginate @items, theme: "twitter-bootstrap-3" %>
   <% else %>
     <div class="row" id="search-items">
       <center><h3><%= t ".empty" %>"<%= params[:search] %>"</h3></center>

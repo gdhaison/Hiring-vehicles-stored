@@ -1,3 +1,4 @@
 $('.destroy-vehicle').bind('ajax:success', function() {
   $(this).closest('tr').fadeOut();
 });
+toastr["success"]('<%= t(".success") %>');

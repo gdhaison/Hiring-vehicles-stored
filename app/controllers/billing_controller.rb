@@ -17,20 +17,19 @@ class BillingController < ApplicationController
 
       customer = Stripe::Customer.new current_user.stripe_id
       customer.source = card_token
-      if customer.save
-        flash[:success] = t "success"
-      else
-        flash[:danger] = t "fails"
-      end
+      customer.save
       format.html {redirect_to success_path}
     end
   end
 	
-  def success; end
+  def success
+    @hiring = current_user.hirings.last
+  end
 
   def payment
     customer = Stripe::Customer.new current_user.stripe_id
     hiring = current_user.hirings.last
+    hiring.update_attributes des: "Paid Online"
     vehicle = hiring.vehicle
     if hiring
       if Stripe::Charge.create payment_params(customer, hiring, vehicle)

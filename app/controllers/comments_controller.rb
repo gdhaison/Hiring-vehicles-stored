@@ -7,16 +7,22 @@ class CommentsController < ApplicationController
   end
 
   def create
+    if params[:vehicle_id]
+      @vehicle = @commentable
+    elsif params[:comment_id]
+      @vehicle = @commentable.commentable
+    end
     @commentable.comments.build comment_params
     if @commentable.save
-      flash[:success] = t ".success"
-    else
-      flash[:danger] = t ".fail"
-    end
-    if params[:vehicle_id]
-      redirect_to @commentable
-    elsif params[:comment_id]
-      redirect_to @commentable.commentable
+      respond_to do |format|
+        if params[:vehicle_id]
+          format.html {redirect_to @commentable}
+          format.js
+        elsif params[:comment_id]
+          format.html {redirect_to @commentable.commentable}
+          format.js
+        end
+      end
     end
   end
 

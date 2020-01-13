@@ -1,5 +1,5 @@
 <%= form_for @branch, url: {action: "create", :controller => "admin/branchs"} do |f| %>
-  <%= render "shared/error_messages", object: f.object %>
+  <%= render "shared/error_messages.js.erb", object: f.object %>
 
   <div class="field">
     <%= f.text_area :name, placeholder: t(".name_here") %>

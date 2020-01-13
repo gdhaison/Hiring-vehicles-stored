@@ -4,8 +4,7 @@
     [t(".taking"), @selects[1]], [t(".give_back"), @selects[2]]], params[:status_eq])) %>
 
   <%= f.label :created_at_cont %>
-  <%= f.text_field :created_at_date_equals, data: {provide: "datepicker"},
+  <%= f.date_field :created_at_date_equals,
     autocomplete: "off", onkeydown: "return false" %>
-
   <%= f.submit %>
 <% end %>

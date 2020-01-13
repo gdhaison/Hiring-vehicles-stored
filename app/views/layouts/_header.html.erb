@@ -26,11 +26,17 @@
                 <%= t ".branch" %>
                 <b class="caret"></b>
               <% end %>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" id= "branch_drop">
                 <%= render partial: "branchs/branch", collection: @branchs %>
                 <li class="divider"></li>
               </ul>
             </li>
+            <% if current_user %>
+              <li><%= link_to "Profile", current_user %></li>
+              <% if current_user.admin %>
+                <li><%= link_to "Admin Page", admin_index_path %></li>
+              <% end %>
+            <% end %>
           </ul>
           <ul>
             <div class="col-md">
